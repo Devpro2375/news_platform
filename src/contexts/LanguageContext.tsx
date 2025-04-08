@@ -2,7 +2,7 @@
 "use client"
 
 import { createContext, useContext, useState, useEffect } from 'react';
-import { translations } from '@/data/translations';
+
 
 type Language = 'en' | 'es' | 'fr' | 'hi' | 'zh';
 
@@ -30,11 +30,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('language', lang);
   };
 
-  // Translation function
-  const t = (key: string) => {
-    return translations[language][key] || key;
-  };
-
+  
   return (
     <LanguageContext.Provider value={{ language, setLanguage: changeLanguage, t }}>
       {children}

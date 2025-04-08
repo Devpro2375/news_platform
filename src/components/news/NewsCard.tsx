@@ -1,4 +1,3 @@
-// src/components/news/NewsCard.tsx
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Play, Clock } from 'lucide-react';
@@ -53,7 +52,7 @@ export function NewsCard({ article, onPlayAudio }: NewsCardProps) {
           <Play className="h-4 w-4" />
           Listen
         </Button>
-        <Link href={`/news/${article.id}`} passHref>
+        <Link href={`/news/${article.id}`} className="text-primary hover:underline">
           <Button variant="default" size="sm">
             Read More
           </Button>
