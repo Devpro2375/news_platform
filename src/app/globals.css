@@ -1,26 +1,49 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* globals.css */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9fafb;
+  }
+  
+  .card {
+    border-radius: 0.5rem;
+  }
+  
+  .card:hover {
+    transform: translateY(-2px);
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Custom Colors */
+  --color-primary: 37 99 235; /* RGB values for #2563eb */
+  --color-secondary: 107 114 128; /* RGB for #6b7280 */
+  
+  /* Custom Spacing */
+  --spacing-18: 4.5rem;
+  
+  /* Extended Configuration */
+  --color-background: 249 250 251; /* #f9fafb */
+  --color-foreground: 17 24 39; /* #111827 */
 }
 
-@media (prefers-color-scheme: dark) {
+/* Apply background/foreground colors */
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--color-background);
+    --foreground: var(--color-foreground);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* globals.css */
+.sdg-card:hover {
+    transform: scale(1.05);
+    box-shadow: rgba(0,0,0,.25)0px8px15px;
+ }
+ 
