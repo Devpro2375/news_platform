@@ -1,4 +1,3 @@
-// src/app/news/page.tsx
 "use client"
 
 import { Header } from '@/components/layout/Header';
@@ -11,20 +10,15 @@ import { NewsArticle } from '@/types/news';
 import { newsArticles } from '@/data/translations';
 
 export default function NewsPage() {
-  // Note: In a real Next.js app, this would be a Client Component
-  // For demonstration purposes, this shows how the state would be managed
   const [selectedSDGs, setSelectedSDGs] = useState<number[]>([]);
   const [selectedSentiment, setSelectedSentiment] = useState<string>('all');
   const [currentAudioArticle, setCurrentAudioArticle] = useState<NewsArticle | null>(null);
   
-  // This filtering would typically happen in a useEffect or custom hook
   const filteredArticles = newsArticles.filter(article => {
-    // Filter by SDGs if any are selected
     if (selectedSDGs.length > 0 && !article.sdgs.some(sdg => selectedSDGs.includes(sdg))) {
       return false;
     }
     
-    // Filter by sentiment if not set to 'all'
     if (selectedSentiment !== 'all' && article.sentiment !== selectedSentiment) {
       return false;
     }
@@ -39,13 +33,15 @@ export default function NewsPage() {
   const handleCloseAudio = () => {
     setCurrentAudioArticle(null);
   };
-  
+
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+
       
       <main className="flex-1 container mx-auto py-8 px-4 md:px-6">
-        <h1 className="text-3xl font-bold mb-8">Latest News</h1>
+        <h1 className="text-4xl font-bold mb-8 text-center text-primary">
+          Latest News
+        </h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-1">
@@ -70,7 +66,9 @@ export default function NewsPage() {
               </div>
             ) : (
               <div className="text-center py-12">
-                <p className="text-muted-foreground">No news articles found matching your filters.</p>
+                <p className="text-lg text-muted-foreground">
+                  No news articles found matching your filters. Please adjust your filters to see results.
+                </p>
               </div>
             )}
           </div>

@@ -1,11 +1,10 @@
-// src/components/news/NewsFilter.tsx
 "use client"
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
-import {  sdgs, SENTIMENT_FILTERS } from '@/lib/sdgs';
+import { sdgs, SENTIMENT_FILTERS } from '@/lib/sdgs';
 
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -23,7 +22,7 @@ export function NewsFilter({
   onSentimentChange
 }: NewsFilterProps) {
   const { t } = useLanguage();
-  
+
   const handleSDGToggle = (sdgId: number) => {
     if (selectedSDGs.includes(sdgId)) {
       onSDGChange(selectedSDGs.filter(id => id !== sdgId));
@@ -31,52 +30,56 @@ export function NewsFilter({
       onSDGChange([...selectedSDGs, sdgId]);
     }
   };
-  
+
   return (
-    <div className="bg-card rounded-lg border p-4">
-      <h2 className="font-semibold text-lg mb-4">Filters</h2>
+    <div className="bg-white rounded-lg  border border-gray-200 p-6 max-w-md mx-auto">
+      <h2 className="text-2xl font-semibold text-gray-800 mb-6">Filters</h2>
       
       <Accordion type="single" collapsible defaultValue="sdg">
         <AccordionItem value="sdg">
-          <AccordionTrigger>{t('filter.sdg')}</AccordionTrigger>
-          <AccordionContent>
-            <div className="space-y-2 mt-2">
-              {sdgs.map(sdg => (
-                <div key={sdg.id} className="flex items-center space-x-2">
-                  <Checkbox 
-                    id={`sdg-${sdg.id}`} 
-                    checked={selectedSDGs.includes(sdg.id)}
-                    onCheckedChange={() => handleSDGToggle(sdg.id)}
-                  />
-                  <Label 
-                    htmlFor={`sdg-${sdg.id}`}
-                    className="text-sm cursor-pointer"
-                  >
-                    SDG {sdg.id}: {sdg.title}
-                  </Label>
-                </div>
-              ))}
-            </div>
+          <AccordionTrigger className="px-4 py-3 text-lg font-medium text-gray-700 bg-transparent hover:bg-gray-100 rounded-md transition-all">
+            {t('filter.sdg')}
+          </AccordionTrigger>
+          <AccordionContent className="space-y-4 mt-4 p-4">
+            {sdgs.map(sdg => (
+              <div key={sdg.id} className="flex items-center space-x-3">
+                <Checkbox 
+                  id={`sdg-${sdg.id}`} 
+                  checked={selectedSDGs.includes(sdg.id)}
+                  onCheckedChange={() => handleSDGToggle(sdg.id)}
+                  className="transition-all focus:ring-2 focus:ring-teal-400"
+                />
+                <Label 
+                  htmlFor={`sdg-${sdg.id}`}
+                  className="text-sm text-gray-600 cursor-pointer hover:text-teal-500 transition-all"
+                >
+                  SDG {sdg.id}: {sdg.title}
+                </Label>
+              </div>
+            ))}
           </AccordionContent>
         </AccordionItem>
         
         <AccordionItem value="sentiment">
-          <AccordionTrigger>{t('filter.sentiment')}</AccordionTrigger>
-          <AccordionContent>
+          <AccordionTrigger className="px-4 py-3 text-lg font-medium text-gray-700 bg-transparent hover:bg-gray-100 rounded-md transition-all">
+            {t('filter.sentiment')}
+          </AccordionTrigger>
+          <AccordionContent className="space-y-4 mt-4 p-4">
             <RadioGroup 
               value={selectedSentiment} 
               onValueChange={onSentimentChange}
-              className="space-y-2 mt-2"
+              className="space-y-3"
             >
               {SENTIMENT_FILTERS.map(filter => (
-                <div key={filter.value} className="flex items-center space-x-2">
+                <div key={filter.value} className="flex items-center space-x-3">
                   <RadioGroupItem 
                     value={filter.value} 
                     id={`sentiment-${filter.value}`} 
+                    className="transition-all focus:ring-2 focus:ring-teal-400"
                   />
                   <Label 
                     htmlFor={`sentiment-${filter.value}`}
-                    className="text-sm cursor-pointer"
+                    className="text-sm text-gray-600 cursor-pointer hover:text-teal-500 transition-all"
                   >
                     {filter.label}
                   </Label>

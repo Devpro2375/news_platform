@@ -1,4 +1,3 @@
-// src/components/common/LanguageSelector.tsx
 "use client"
 
 import { useState } from 'react';
@@ -12,7 +11,6 @@ import {
 import { Globe } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { SUPPORTED_LANGUAGES } from '@/lib/sdgs';
-
 
 export function LanguageSelector() {
   const { language, setLanguage, t } = useLanguage();
@@ -32,7 +30,8 @@ export function LanguageSelector() {
             onClick={() => setLanguage(lang.code as any)}
             className={language === lang.code ? 'bg-accent' : ''}
           >
-            {t(`language.${lang.code}`)}
+            {/* Dynamically construct the key for the translation */}
+            {t(`language.${lang.code}` as keyof typeof t)}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
