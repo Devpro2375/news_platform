@@ -1,15 +1,20 @@
-// src/components/layout/Header.tsx
 "use client"
 
+import { useState } from 'react'; // Import useState for managing the menu state
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-
 import { LanguageSelector } from '@/components/common/LanguageSelector';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
 
 export function Header() {
   const { t } = useLanguage();
+  
+  // State to control the mobile menu visibility
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Toggle mobile menu visibility
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -43,21 +48,21 @@ export function Header() {
         <div className="flex gap-4">
           <LanguageSelector />
     
-          
           {/* Mobile Menu Button */}
           <Button 
             variant="outline" 
             size="icon" 
             className="md:hidden p-2 rounded-full hover:bg-gray-200 transition-colors duration-300"
             aria-label="Open menu"
+            onClick={toggleMobileMenu} // Toggle the mobile menu visibility
           >
             <Menu className="h-5 w-5 text-gray-700" />
           </Button>
         </div>
       </div>
 
-      {/* Mobile Menu (You can add a dropdown or slide-in effect later) */}
-      <div className="md:hidden absolute top-16 left-0  w-full bg-white shadow-lg">
+      {/* Mobile Menu */}
+      <div className={`md:hidden absolute top-16 left-0 w-full bg-white shadow-lg transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}>
         {/* Example Mobile Menu */}
         <nav className="flex flex-col items-center gap-4 py-4">
           <Link href="/" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors duration-200">

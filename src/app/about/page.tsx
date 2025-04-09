@@ -69,17 +69,22 @@ const AboutPage = () => {
           <div className="flex flex-col items-center">
             <div className="h-32 w-32 rounded-full bg-gray-300 mb-4"></div>
             <p className="font-semibold text-lg">Darshana Pagrut</p>
-            <p className="text-gray-600">Founder & CEO</p>
+            <p className="text-gray-600">Team Lead</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="h-32 w-32 rounded-full bg-gray-300 mb-4"></div>
-            <p className="font-semibold text-lg">Jane Smith</p>
-            <p className="text-gray-600">Chief Technology Officer</p>
+            <p className="font-semibold text-lg">Sejal Kagdelwar</p>
+            <p className="text-gray-600">Team Member</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="h-32 w-32 rounded-full bg-gray-300 mb-4"></div>
-            <p className="font-semibold text-lg">Alice Johnson</p>
-            <p className="text-gray-600">Product Manager</p>
+            <p className="font-semibold text-lg">Harshal Chinchole</p>
+            <p className="text-gray-600"> Team Member</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="h-32 w-32 rounded-full bg-gray-300 mb-4"></div>
+            <p className="font-semibold text-lg">Girish Sonune</p>
+            <p className="text-gray-600"> Team Member</p>
           </div>
         </div>
       </section>
