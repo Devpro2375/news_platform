@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ThemeToggle } from '@/components/common/ThemeToggle';
+
 import { LanguageSelector } from '@/components/common/LanguageSelector';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
@@ -42,7 +42,7 @@ export function Header() {
         {/* Language & Theme Toggle + Mobile Menu Icon */}
         <div className="flex gap-4">
           <LanguageSelector />
-          <ThemeToggle />
+    
           
           {/* Mobile Menu Button */}
           <Button 
